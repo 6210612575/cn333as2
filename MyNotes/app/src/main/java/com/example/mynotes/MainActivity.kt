@@ -48,10 +48,10 @@ class  MainActivity : AppCompatActivity(), MainFragment.MainFragmentInteractionL
         }
 
         binding.addButton.setOnClickListener {
-            popUpCreateNote()
+            CreateNoteTitle()
         }
     }
-    private fun popUpCreateNote() {
+    private fun CreateNoteTitle() {
         val dialogTitle = getString(R.string.enterNameOfNote)
         val positiveButTitle = getString(R.string.createList)
 
@@ -64,7 +64,7 @@ class  MainActivity : AppCompatActivity(), MainFragment.MainFragmentInteractionL
         builder.setPositiveButton(positiveButTitle) { dialog, _ ->
             dialog.dismiss()
             if (viewModel.find(noteTitleEditText.text.toString())) {
-                Toast.makeText(this,"The note name has been taken",Toast.LENGTH_LONG).show()
+                Toast.makeText(this,"you already have this",Toast.LENGTH_LONG).show()
             }else {
                 val noteList = NoteDetail(noteTitleEditText.text.toString(), "")
                 viewModel.createNote(noteList)
@@ -77,9 +77,9 @@ class  MainActivity : AppCompatActivity(), MainFragment.MainFragmentInteractionL
 
     private fun showNoteDetail(note: NoteDetail) {
         if (binding.mainFragmentContainer == null) {
-            val note = Intent(this, NoteDetailActivity::class.java)
-            note.putExtra(INTENT_NOTE_KEY, note)
-            startActivity(note)
+            val notes = Intent(this, NoteDetailActivity::class.java)
+            notes.putExtra(INTENT_NOTE_KEY, note)
+            startActivity(notes)
         }else{
             val bundle = bundleOf(INTENT_NOTE_KEY to note)
 
@@ -95,16 +95,16 @@ class  MainActivity : AppCompatActivity(), MainFragment.MainFragmentInteractionL
         const val NOTE_DETAIL_REQUEST_CODE = 123
     }
 
-    override fun noteItemTapped(note: NoteDetail) {
+    override fun clicknotetitle(note: NoteDetail) {
         showNoteDetail(note)
     }
 
     override fun noteItemHold(note: NoteDetail) {
-        popUpRemove(note)
+        Remove(note)
     }
 
-    private fun popUpRemove(note: NoteDetail) {
-        val dialogTitle = "You removing note ${note.name}!"
+    private fun Remove(note: NoteDetail) {
+        val dialogTitle = " Do you want to delete ${note.name} ?"
         val positiveButtonTitle = "Yes"
         val negativeButtonTitle = "No"
 
@@ -138,7 +138,7 @@ class  MainActivity : AppCompatActivity(), MainFragment.MainFragmentInteractionL
 
 
             binding.addButton.setOnClickListener {
-                popUpCreateNote()
+                CreateNoteTitle()
             }
 
         }
@@ -174,7 +174,7 @@ class  MainActivity : AppCompatActivity(), MainFragment.MainFragmentInteractionL
                 remove(noteNoteFragment)
             }
             binding.addButton.setOnClickListener {
-                popUpCreateNote()
+                CreateNoteTitle()
             }
         }
     }

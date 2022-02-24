@@ -22,7 +22,7 @@ class MainFragment() : Fragment(), NoteSelectionRecyclerViewAdapter.NoteSelectio
     var holdClickListener: MainFragmentInteractionListener? = null
 
     interface MainFragmentInteractionListener {
-        fun noteItemTapped(note: NoteDetail)
+        fun clicknotetitle(note: NoteDetail)
         fun noteItemHold(note: NoteDetail)
     }
 
@@ -55,11 +55,11 @@ class MainFragment() : Fragment(), NoteSelectionRecyclerViewAdapter.NoteSelectio
         }
     }
 
-    override fun noteItemClicked(note: NoteDetail) {
-        clickListener?.noteItemTapped(note)
+    override fun clickNoteTitle(note: NoteDetail) {
+        clickListener?.clicknotetitle(note)
     }
 
-    override fun noteItemHold(note: NoteDetail) {
+    override fun HoldNameTitle(note: NoteDetail) {
         holdClickListener?.noteItemHold(note)
     }
 

@@ -12,8 +12,8 @@ class NoteSelectionRecyclerViewAdapter(private val notes: MutableList<NoteDetail
                                        val clickListener: NoteSelectionRecyclerViewClickListener, val holdClickListener: NoteSelectionRecyclerViewClickListener) : RecyclerView.Adapter<NoteSelectionViewHolder>() {
 
     interface NoteSelectionRecyclerViewClickListener {
-        fun noteItemClicked(note: NoteDetail)
-        fun noteItemHold(note: NoteDetail)
+        fun clickNoteTitle(note: NoteDetail)
+        fun HoldNameTitle(note: NoteDetail)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteSelectionViewHolder {
@@ -25,10 +25,10 @@ class NoteSelectionRecyclerViewAdapter(private val notes: MutableList<NoteDetail
         holder.binding.itemNum.text = (position + 1).toString()
         holder.binding.itemName.text = notes[position].name
         holder.itemView.setOnClickListener {
-            clickListener.noteItemClicked(notes[position])
+            clickListener.clickNoteTitle(notes[position])
         }
         holder.itemView.setOnLongClickListener{
-            holdClickListener.noteItemHold(notes[position])
+            holdClickListener.HoldNameTitle(notes[position])
             true
         }
     }
