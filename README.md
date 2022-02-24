@@ -1,7 +1,8 @@
 # cn333as2
-# Assignment 1
+# Assignment 2
 # Name : Anudchana Panyapradit 
 # ID : 6210612708
+# App My Notes
 # App Functionalities
   1. สามารถเพิ่มหัวข้อโน้ต และ รายละเอียดโน้ตได้
   2. หน้าแรกแสดงหัวข้อโดยใช้ Recyclerview
